@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="signup.css">
+</head>
+<body>
+    <header>
+        <h1>Sign Up</h1>
+    </header>
+    <button onclick="goBack()" style="font-size: 20px;">&#8592; Back</button>
+    <form action="login.html" method="post" onsubmit="validateForm(event)">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>  
+
+        <label for="confirmPassword">Confirm Password:</label>
+        <input type="password" id="confirmPassword" name="confirmPassword" required>
+
+        <button type="submit">Sign Up</button>
+    </form>
+    <script>
+        function validateForm(event) {
+            event.preventDefault();
+
+            const username = document.getElementById('username').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            if (username.trim() === '' || email.trim() === '' || password.trim() === '' || confirmPassword.trim() === '') {
+                alert('Please fill in all fields.');
+                return;
+            }
+
+            if (password !== confirmPassword) {
+                alert('Passwords do not match.');
+                return;
+            }
+
+            // Redirect to login.html
+            window.location.href = 'login.html';
+        }
+
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+    <a href="signup.php">Sign Up</a>
+</body>
+</html>
